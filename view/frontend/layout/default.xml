@@ -5,7 +5,6 @@
             <block class="Magento\Framework\View\Element\Template" name="locations" before="footer-container" template="Rcason_StorePicker::locations.phtml">
                 <arguments>
                     <argument name="view_model" xsi:type="object">Rcason\StorePicker\ViewModel\Locations</argument>
-                    <argument name="cache_lifetime" xsi:type="number">84600</argument>
                 </arguments>
             </block>
         </referenceBlock>

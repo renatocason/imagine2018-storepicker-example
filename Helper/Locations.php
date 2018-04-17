@@ -8,7 +8,6 @@ use Magento\Directory\Api\CountryInformationAcquirerInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
 use Rcason\StorePicker\Api\LocationRepositoryInterface;
-use Rcason\StorePicker\Model\Cache as StorePickerCache;
 
 class Locations
 {
@@ -33,29 +32,21 @@ class Locations
     protected $countryInformationAcquirer;
     
     /**
-     * @var StorePickerCache
-     */
-    protected $storePickerCache;
-    
-    /**
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param LocationRepositoryInterface $locationRepository
      * @param StoreManagerInterface $storeManager
      * @param CountryInformationAcquirerInterface $countryInformationAcquirer
-     * @param StorePickerCache $storePickerCache
      */
     public function __construct(
         SearchCriteriaBuilder $searchCriteriaBuilder,
         LocationRepositoryInterface $locationRepository,
         StoreManagerInterface $storeManager,
-        CountryInformationAcquirerInterface $countryInformationAcquirer,
-        StorePickerCache $storePickerCache
+        CountryInformationAcquirerInterface $countryInformationAcquirer
     ) {
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->locationRepository = $locationRepository;
         $this->storeManager = $storeManager;
         $this->countryInformationAcquirer = $countryInformationAcquirer;
-        $this->storePickerCache = $storePickerCache;
     }
     
     /**
@@ -67,11 +58,6 @@ class Locations
             'group' => 'StorePicker_getLocations',
             'method' => __METHOD__,
         ]);
-        
-        // Return from cache
-        if ($data = $this->storePickerCache->getLocations()) {
-            return $data;
-        }
         
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $locations = $this->locationRepository->getList($searchCriteria)
@@ -98,9 +84,6 @@ class Locations
             }
             return ($aCountryName < $bCountryName) ? -1 : 1;
         });
-        
-        // Save to cache
-        $this->storePickerCache->setLocations($data);
         
         \Magento\Framework\Profiler::stop('StorePicker_getLocations:' . __METHOD__);
         

@@ -12,15 +12,6 @@ use Rcason\StorePicker\Model\ResourceModel\Location as ResourceModel;
  */
 class Location extends \Magento\Framework\Model\AbstractModel implements LocationInterface
 {
-    const CACHE_KEY = 'storepicker_location';
-    
-    /**
-     * Model cache tag for clear cache in after save and after delete
-     *
-     * @var string
-     */
-    protected $_cacheTag = self::CACHE_KEY;
-    
     /**
      * @return void
      */

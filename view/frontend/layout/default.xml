@@ -6,9 +6,6 @@
                 <arguments>
                     <argument name="view_model" xsi:type="object">Rcason\StorePicker\ViewModel\Locations</argument>
                     <argument name="cache_lifetime" xsi:type="number">84600</argument>
-                    <argument name="cache_tags" xsi:type="array">
-                        <item name="cache_key" xsi:type="string"></item>
-                    </argument>
                 </arguments>
             </block>
         </referenceBlock>

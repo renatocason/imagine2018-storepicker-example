@@ -1,0 +1,9 @@
+<?php $locations = $block->getViewModel()->getLocations() ?>
+<!-- Generated at: <?php echo time() ?> -->
+<select>
+<?php foreach ($locations as $location): ?>
+    <option value="<?php echo $location->getStoreUrl() ?>">
+        <?php echo $location->getCountryName() ?>
+    </option>
+<?php endforeach; ?>
+</select>

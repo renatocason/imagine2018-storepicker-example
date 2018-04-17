@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="locations" before="footer-container" template="Rcason_StorePicker::locations.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Rcason\StorePicker\ViewModel\Locations</argument>
+                    <argument name="cache_lifetime" xsi:type="number">84600</argument>
+                    <argument name="cache_tags" xsi:type="array">
+                        <item name="cache_key" xsi:type="string"></item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>
